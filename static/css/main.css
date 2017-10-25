@@ -1,0 +1,12 @@
+
+html, body, .container-table {
+   height: 100%;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.container-table {
+   display: table;
+}
+.vertical-center-row {
+   display: table-cell;
+   vertical-align: middle;
+}
