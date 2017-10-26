@@ -6,26 +6,13 @@ from email.mime.text import MIMEText
 import sys
 import appSettings
 import models
-#sending email with livestream links
-def searchUrls():
-    dataset = []
-    logData = models.urlLog
-    if logData.select().count() > 0:
-        for data in logData.select(logData.urlDomain)
-                                 .group_by()
-            dataDict = {}
-            dataDict['title'] = data.title
-            dataDict['link'] = data.link
-            dataset.append(dataDict)
-        q = models.Requests.update(reported = 1).where(models.Requests.livestream == 1)
-        q.execute()
-    sent(dataset)
+
 
 def sent(content):
 
     msg = MIMEMultipart()
-    fromme = "Ling.Gao@turner.com"
-    mails = ['Ling.Gao@turner.com','Joe.Green@turner.com']
+    fromme = appSettings.systemEmail
+    mails = appSettings.adminEmail
     msg['From'] = fromme
     msg['To'] = ",".join(mails)
     msg['Subject'] = "URL checker"
@@ -66,6 +53,3 @@ def sent(content):
         print ("smtplib.SMTPAuthenticationError")
 
     return
-
-if __name__ == '__main__':
-    searchLivestream()

@@ -13,7 +13,6 @@ class admin(BaseModel):
     userName = CharField(unique=True)
     userPassword = CharField(null=True)
     apikey = CharField(null=True)
-    permission = CharField(null=True)
 
     def __unicode__(self):
         return self.userName
@@ -35,7 +34,7 @@ class urlLog(BaseModel):
     urlDomain = CharField(null=True)
     timeChecked = DateTimeField(default=datetime.now)
     statusCode = CharField(null=True)
-    healthState = CharField(null=True)
+    healthyState = CharField(null=True)
 
     def __unicode__(self):
         return (self.id, self.urlDomain, self.healthState)

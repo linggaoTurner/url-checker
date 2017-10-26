@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+
+  <h2>Search Domain Name:</h2>
+  <form action={% url 'searchDomain' %} id="searchDomain" method="post">
+  {% csrf_token %}
+         <div id="custom-search-input">
+              <div class="input">
+                <select id="searchText" class="selectpicker" data-live-search="true" data-width="400px">
+                  <option value="" class="static">Search Domain Name</option>
+                {% for data in dataset %}
+                  {% if data.urlName %}
+                  <option class="dropdownoptions" value="{{ data.urlName }}">{{ data.urlName }}</option>
+                  {% endif %}
+                {% endfor %}
+                </select>
+                <button id="searchBtn" class="btn btn-primary disabled">Search</button>
+              </div>
+
+        </div>
+
+  </form>
