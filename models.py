@@ -3,16 +3,15 @@ from peewee import *
 import peewee
 from datetime import datetime
 
-database = SqliteDatabase('urlChecker.db')
+database = SqliteDatabase('urlchecker.db')
 class BaseModel(Model):
     class Meta:
         database = database
 
 
-class admin(BaseModel):
+class users(BaseModel):
     userName = CharField(unique=True)
     userPassword = CharField(null=True)
-    apikey = CharField(null=True)
 
     def __unicode__(self):
         return self.userName
@@ -41,6 +40,6 @@ class urlLog(BaseModel):
 
 def init_db():
     try:
-        database.create_tables([admin,urlInventory])
+        database.create_tables([admin,urlInventory,urlLog])
     except peewee.OperationalError:
         print ("tables already exists!")

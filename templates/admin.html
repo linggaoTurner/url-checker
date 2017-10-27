@@ -5,21 +5,21 @@
 
 
   <h2>Search Domain Name:</h2>
-  <form action={% url 'searchDomain' %} id="searchDomain" method="post">
-  {% csrf_token %}
-         <div id="custom-search-input">
-              <div class="input">
-                <select id="searchText" class="selectpicker" data-live-search="true" data-width="400px">
-                  <option value="" class="static">Search Domain Name</option>
-                {% for data in dataset %}
-                  {% if data.urlName %}
-                  <option class="dropdownoptions" value="{{ data.urlName }}">{{ data.urlName }}</option>
-                  {% endif %}
-                {% endfor %}
-                </select>
-                <button id="searchBtn" class="btn btn-primary disabled">Search</button>
-              </div>
+  <form method="post" action='{{ url_for('searchDomain') }}' id ='searchDomain'>
+     <div id="custom-search-input">
+          <div class="input">
+            <select id="searchText" class="selectpicker" data-live-search="true" data-width="400px">
+              <option value="" class="static">Search Domain Name</option>
+            {% for data in dataset %}
+              {% if data.urlName %}
+              <option class="dropdownoptions" value="{{ data.urlDomain }}">{{ data.urlName }}</option>
+              {% endif %}
+            {% endfor %}
+            </select>
+            <button id="searchBtn" class="btn btn-primary disabled">Search</button>
+          </div>
 
-        </div>
-
+    </div>
   </form>
+  <script src="../static/js/admin.js"></script>
+{% endblock %}

@@ -12,13 +12,13 @@ def sent(content):
 
     msg = MIMEMultipart()
     fromme = appSettings.systemEmail
-    mails = appSettings.adminEmail
+    mails = appSettings.adminEmails
     msg['From'] = fromme
     msg['To'] = ",".join(mails)
     msg['Subject'] = "URL checker"
     b1 = 'Hi ,\n\nThe following URL is not healthy:\n\n'
     b3 = '\n\nRegards,\n\nLing Gao'
-    b2 = content[0] + ": \n" + content[1] + ",\n\n"
+    b2 = content + ",\n\n"
     print(b2)
     body = b1 + b2 + b3
     msg.attach(MIMEText(body))

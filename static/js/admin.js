@@ -34,7 +34,6 @@ function searchName()
     $.ajax({
       url:$('#searchDomain').attr('action'),
       type: 'POST',
-      csrfmiddlewaretoken: '{{ csrf_token }}',
       data: {'name':$('#searchText').val()},
 
 
@@ -45,7 +44,7 @@ function searchName()
           $('#searchDomain').find("p").eq(0).html(result.message);
         }
         else{
-          window.location.replace('/logs')
+          window.location.replace('/loginfo')
         }
 
 
