@@ -32,7 +32,7 @@ def server_error(e):
     return render_template('500.html'), 500
 
 #error 401 page
-#doesn't work because of unable overwrite werkzeug.exceptions to generate {'message':'xxx'} from abort()
+#doesn't work because of unable overwrite werkzeug.exceptions to generate {'message':'xxx'} from abort()    
 @app.errorhandler(401)
 def unauthorized_error(e):
     return render_template('401.html'), 401
